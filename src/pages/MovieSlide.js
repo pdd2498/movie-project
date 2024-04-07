@@ -3,14 +3,17 @@ import axios from 'axios'
 import Card from './Card'
 import ReactSimplyCarousel from 'react-simply-carousel';
 
-export default function MovieSlide({apiLink , name}) {
+export default function MovieSlide({apiLink , name , typ , show , show2}) {
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   const [movies , setMovies] = useState([]);
+  const [typs , setTyp] = useState("movie/");
+
+  console.log(apiLink,show,typ)
 
   const options = {
     method: 'GET',
-    url: apiLink,
+    url: `${apiLink}${typs}${typ}`,
     headers: {
       accept: 'application/json',
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5YzJlOGJjMGUxNzhkOTQzZTljNzc5N2I1ZTRiNDU4MSIsInN1YiI6IjY2MGU2N2Q1ZDZkYmJhMDE2MzcwZTU0ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mGgCe_BELYCrTju2dBel26b8WLi9DUN_xwaSGmWgDVA'
@@ -28,12 +31,27 @@ export default function MovieSlide({apiLink , name}) {
       console.error(error);
     });
   }
+
+
   useEffect(()=>{
     api()
-  },[])
+  },[typs]);
+
+
+
   return (
     <div className='slidBox'>
+      <div className='showButn'>
       <h1 className='heding'>{name}</h1>
+      <div >
+          <button className='button' onClick={()=>{
+            if(typs === "tv/")setTyp("movie/")
+          }}>{show}</button>
+          <button className='button' onClick={()=>{
+            if(typs === "movie/")setTyp("tv/");
+          }}>{show2}</button>
+      </div>
+      </div>
 
       <ReactSimplyCarousel
         activeSlideIndex={activeSlideIndex}
@@ -77,7 +95,7 @@ export default function MovieSlide({apiLink , name}) {
         responsiveProps={[
           {
             itemsToShow: 5,
-            itemsToScroll: 2,
+            itemsToScroll: 1,
             minWidth: 768,
           },
         ]}

@@ -45,6 +45,14 @@ code {
   object-fit: cover;
   object-position: center;
 }
+.showButn{
+  display: flex;
+    width: 75vw;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10vw;
+    margin-bottom: 5vh;
+}
 .movieTitle{
   font-size: larger;
   font-weight: 700;

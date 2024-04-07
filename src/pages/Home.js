@@ -39,9 +39,9 @@ export default function Home() {
           </div>
       </div>
       <div className='uper'></div>
-      <MovieSlide apiLink={'https://api.themoviedb.org/3/trending/movie/day'} name={"Trending"}/>
-      <MovieSlide apiLink={'https://api.themoviedb.org/3/movie/popular'} name={"What's Popular"} />
-      <MovieSlide apiLink={'https://api.themoviedb.org/3/movie/top_rated'} name={"Top Rated"}/>
+      <MovieSlide apiLink={'https://api.themoviedb.org/3/trending/'} name={"Trending"} typ = "day" show = "Movie" show2 = "TV_Show"/>
+      <MovieSlide apiLink={'https://api.themoviedb.org/3/'} name={"What's Popular"} typ = "popular" show = "Movie" show2 = "TV_Show"/>
+      <MovieSlide apiLink={'https://api.themoviedb.org/3/'} name={"Top Rated"} typ = "top_rated" show = "Movie" show2 = "TV-Show"/>
 
     </div>
   )
